@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birds-Eye Drone Services | Auckland Drone Photography &amp; 4K Video</title>
+  <style>
+    /* ==========================================================================
+       1. Velvet Red & Dark Crimson Theme Tokens (100% Self-Contained)
+       ========================================================================== */
+    :root {
+      --bg-velvet: #080f0c;
+      --bg-crimson-deep: #0d1913;
+      --bg-crimson-card: #12231a;
+      --bg-crimson-elevated: #1a3023;
+      --bg-input: #060b08;
+      --accent-velvet: #146044;
+      --accent-crimson: #187b55;
+      --accent-bright: #4fce91;
+      --accent-rose: #7ae4ae;
+      --accent-rose-soft: #b5f3d1;
+      --text-primary: #f1faf4;
+      --text-secondary: #c8d9ce;
+      --text-muted: #91a89a;
+      --border-velvet: rgba(79, 206, 145, 0.22);
+      --border-strong: rgba(122, 228, 174, 0.5);
+      --shadow-velvet: 0 24px 54px -14px rgba(0, 0, 0, 0.85), 0 0 36px rgba(24, 123, 85, 0.24);
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 26px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-serif: Georgia, "Times New Roman", Times, serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-velvet);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-velvet);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    /* ==========================================================================
+       2. Layout & Typography Helpers
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 84px 0;
+      border-bottom: 1px solid rgba(79, 206, 145, 0.12);
+    }
+
+    .section-crimson {
+      background: linear-gradient(180deg, var(--bg-crimson-deep) 0%, #101d15 100%);
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-rose);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.18;
+      color: #ffffff;
+      margin-bottom: 14px;
+    }
+
+    .section-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       3. Buttons & Velvet Badges
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent-crimson) 100%);
+      color: #ffffff;
+      box-shadow: 0 12px 26px -8px rgba(79, 206, 145, 0.42);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px -8px rgba(79, 206, 145, 0.56);
+    }
+
+    .btn-secondary {
+      background-color: rgba(241, 250, 244, 0.05);
+      border-color: var(--border-velvet);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(79, 206, 145, 0.15);
+      border-color: var(--border-strong);
+    }
+
+    .btn-sm {
+      padding: 9px 16px;
+      font-size: 13.5px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background-color: rgba(24, 123, 85, 0.3);
+      border: 1px solid rgba(122, 228, 174, 0.38);
+      color: var(--accent-rose-soft);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-rose);
+      box-shadow: 0 0 10px var(--accent-bright);
+    }
+
+    /* ==========================================================================
+       4. Sticky Navigation Bar & White Logo Badge
+       ========================================================================== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 120;
+      background-color: rgba(5, 12, 8, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-velvet);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      gap: 16px;
+    }
+
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 12px;
+      border: 2px solid rgba(122, 228, 174, 0.45);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55);
+      transition: transform 0.2s ease;
+    }
+
+    .logo-badge:hover {
+      transform: translateY(-1px);
+    }
+
+    .logo-badge img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      color: var(--accent-rose);
+    }
+
+    .burger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-crimson-card);
+      border: 1px solid var(--border-velvet);
+      color: #ffffff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .mobile-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      padding: 14px 20px 22px;
+      background-color: var(--bg-crimson-deep);
+      border-bottom: 1px solid var(--border-velvet);
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer a {
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .mobile-drawer a:hover {
+      background-color: rgba(79, 206, 145, 0.15);
+    }
+
+    /* ==========================================================================
+       5. Full-Bleed Velvet Hero Showcase
+       ========================================================================== */
+    .hero-showcase {
+      position: relative;
+      min-height: 76vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-velvet);
+    }
+
+    .hero-bg-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transform: scale(1.02);
+    }
+
+    .hero-velvet-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(5, 12, 8, 0.94) 0%, rgba(8, 18, 12, 0.84) 52%, rgba(5, 12, 8, 0.56) 100%),
+        linear-gradient(180deg, rgba(5, 12, 8, 0.45) 0%, rgba(5, 12, 8, 0.88) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 680px;
+      padding: 64px 0;
+    }
+
+    .hero-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.12;
+      color: #ffffff;
+      margin-bottom: 18px;
+    }
+
+    .hero-heading span {
+      color: var(--accent-rose);
+    }
+
+    .hero-copy {
+      font-size: 17px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin-bottom: 32px;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    .hero-highlights span::before {
+      content: "\2713";
+      color: var(--accent-rose);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    /* ==========================================================================
+       6. Services & Print Showcase Cards
+       ========================================================================== */
+    .cards-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .velvet-card {
+      background-color: var(--bg-crimson-card);
+      border: 1px solid var(--border-velvet);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
+    }
+
+    .velvet-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-velvet);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background-color: rgba(24, 123, 85, 0.28);
+      border: 1px solid rgba(122, 228, 174, 0.32);
+      color: var(--accent-rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .velvet-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .velvet-card p {
+      font-size: 14.5px;
+      color: var(--text-secondary);
+      margin-bottom: 18px;
+    }
+
+    .feature-list {
+      list-style: none;
+      border-top: 1px solid rgba(79, 206, 145, 0.15);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .feature-list li::before {
+      content: "\2022";
+      color: var(--accent-rose);
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* ==========================================================================
+       7. Filterable Caption-Free Gallery & Full-Screen Lightbox
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .filter-tab {
+      padding: 10px 18px;
+      border-radius: 999px;
+      background-color: var(--bg-crimson-card);
+      border: 1px solid var(--border-velvet);
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--border-strong);
+      color: #ffffff;
+    }
+
+    .filter-tab.active {
+      background: linear-gradient(135deg, var(--accent-bright), var(--accent-crimson));
+      border-color: transparent;
+      color: #ffffff;
+      box-shadow: 0 8px 20px -6px rgba(79, 206, 145, 0.42);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .gallery-tile {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background-color: var(--bg-crimson-card);
+      border: 1px solid var(--border-velvet);
+      cursor: pointer;
+      transition: transform 0.26s ease, border-color 0.26s ease, box-shadow 0.26s ease;
+    }
+
+    .gallery-tile.hidden {
+      display: none;
+    }
+
+    .gallery-tile:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-strong);
+      box-shadow: var(--shadow-velvet);
+    }
+
+    .gallery-tile img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-tile:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background-color: rgba(3, 8, 5, 0.96);
+      padding: 24px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-modal.open {
+      display: flex;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      width: 100%;
+      max-width: 1120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .lightbox-stage img {
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      background-color: #050203;
+    }
+
+    .lightbox-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 440px;
+      gap: 12px;
+    }
+
+    .lightbox-counter {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       8. Auckland Public Transport Corridor Coverage
+       ========================================================================== */
+    .corridors-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .corridor-panel {
+      background-color: var(--bg-crimson-card);
+      border: 1px solid var(--border-velvet);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .corridor-panel h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .corridor-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background-color: rgba(79, 206, 145, 0.18);
+      color: var(--accent-rose-soft);
+      border: 1px solid rgba(122, 228, 174, 0.32);
+    }
+
+    .corridor-panel p {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .stops-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .stop-chip {
+      font-size: 12.5px;
+      padding: 5px 11px;
+      border-radius: 8px;
+      background-color: var(--bg-input);
+      border: 1px solid rgba(79, 206, 145, 0.18);
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       9. Interactive Quote & Print Calculator / Form
+       ========================================================================== */
+    .quote-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .quote-card,
+    .estimate-card {
+      background-color: var(--bg-crimson-card);
+      border: 1px solid var(--border-velvet);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow-velvet);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .form-grid-2 .field-group {
+      margin-bottom: 0;
+    }
+
+    .field-label {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-input);
+      border: 1px solid rgba(79, 206, 145, 0.26);
+      color: #ffffff;
+      font-size: 14.5px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field-input:focus {
+      border-color: var(--accent-bright);
+      box-shadow: 0 0 0 3px rgba(79, 206, 145, 0.18);
+    }
+
+    .print-box {
+      background-color: var(--bg-input);
+      border: 1px solid rgba(79, 206, 145, 0.26);
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+
+    .print-toggle {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .print-toggle input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--accent-bright);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .print-fields {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(79, 206, 145, 0.16);
+    }
+
+    .print-fields.open {
+      display: grid;
+    }
+
+    .estimate-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(79, 206, 145, 0.13);
+      font-size: 14px;
+      color: var(--text-secondary);
+      gap: 12px;
+    }
+
+    .estimate-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 0 6px;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .estimate-total span:last-child {
+      color: var(--accent-rose);
+      font-family: var(--font-serif);
+      font-size: 24px;
+    }
+
+    .estimate-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .action-feedback {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--accent-rose-soft);
+      min-height: 20px;
+    }
+
+    .quote-success {
+      display: none;
+      text-align: center;
+      padding: 28px 16px;
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      margin-top: 18px;
+    }
+
+    .quote-success.visible {
+      display: block;
+    }
+
+    /* ==========================================================================
+       10. Footer
+       ========================================================================== */
+    .footer {
+      background-color: #050b07;
+      padding: 46px 0;
+      border-top: 1px solid var(--border-velvet);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .footer-note {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      max-width: 460px;
+      margin-top: 12px;
+    }
+
+    /* ==========================================================================
+       11. Responsive Breakpoints
+       ========================================================================== */
+    @media (max-width: 980px) {
+      .cards-grid-3,
+      .corridors-grid,
+      .quote-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-menu {
+        display: none;
+      }
+      .burger-btn {
+        display: inline-flex;
+      }
+      .gallery-grid,
+      .form-grid-2,
+      .print-fields {
+        grid-template-columns: 1fr;
+      }
+      .quote-card,
+      .estimate-card {
+        padding: 22px 18px;
+      }
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    /* Premium booking and route-builder refinements */
+    .topbar { background: rgba(6, 13, 9, .91); }
+    .hero-showcase { min-height: min(760px, 82vh); }
+    .hero-heading, .section-title { letter-spacing: -.025em; }
+    .velvet-card, .corridor-panel, .quote-card, .estimate-card { backdrop-filter: blur(12px); }
+    .velvet-card { background: linear-gradient(145deg, rgba(22, 43, 31, .96), rgba(13, 27, 19, .98)); }
+    .corridor-panel { background: linear-gradient(145deg, rgba(20, 39, 28, .95), rgba(12, 25, 18, .98)); }
+    .quote-card, .estimate-card { background: linear-gradient(155deg, rgba(20, 39, 28, .98), rgba(10, 21, 15, .99)); }
+    .section-header { margin-bottom: 40px; }
+    .btn { min-height: 44px; }
+    .btn:focus-visible, .filter-tab:focus-visible, .burger-btn:focus-visible, .gallery-tile:focus-visible { outline: 3px solid var(--accent-bright); outline-offset: 3px; }
+    .form-step-heading { display:flex; align-items:center; gap:13px; margin: 2px 0 20px; }
+    .form-step-heading.location-step { margin-top: 28px; }
+    .step-number { display:grid; place-items:center; flex:0 0 36px; width:36px; height:36px; border-radius:11px; color:#07130c; background:var(--accent-bright); font-size:13px; font-weight:800; }
+    .form-step-heading strong { display:block; color:#fff; font-size:16px; }
+    .form-step-heading small, .route-header small { display:block; color:var(--text-muted); font-size:12.5px; margin-top:2px; }
+    .location-card { padding:18px; border-radius:15px; background:rgba(4, 12, 7, .45); border:1px solid var(--border-velvet); }
+    .location-card-title { display:flex; align-items:center; gap:10px; margin-bottom:16px; color:#fff; font-size:14px; }
+    .location-index { width:25px; height:25px; display:grid; place-items:center; border-radius:8px; background:rgba(79,206,145,.16); color:var(--accent-rose); font-size:12px; font-weight:800; }
+    .primary-tag { margin-left:auto; color:var(--accent-rose-soft); border:1px solid var(--border-velvet); padding:3px 8px; border-radius:999px; font-size:10px; text-transform:uppercase; letter-spacing:.08em; }
+    .route-builder { margin-top:16px; padding:18px; border-radius:15px; background:rgba(4, 12, 7, .36); border:1px solid var(--border-velvet); }
+    .route-builder[hidden] { display:none !important; }
+    .route-header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:15px; }
+    .route-header strong { color:#fff; font-size:14px; }
+    .route-count { white-space:nowrap; padding:5px 9px; border-radius:99px; background:rgba(79,206,145,.12); color:var(--accent-rose-soft); font-size:11px; font-weight:700; }
+    .route-stop { padding:14px; border:1px solid rgba(79,206,145,.16); border-radius:12px; margin-bottom:12px; background:rgba(15, 31, 21, .8); }
+    .route-stop-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; font-size:13px; color:#fff; }
+    .remove-stop { border:0; background:transparent; color:var(--accent-rose-soft); cursor:pointer; font:inherit; font-size:12px; text-decoration:underline; }
+    .route-stop .field-group { margin-bottom:10px; }
+    .route-stop .field-group:last-child { margin-bottom:0; }
+    .add-stop-btn { width:100%; border-style:dashed; }
+    .booking-submit { width:100%; padding:16px; margin-top:6px; }
+    .form-disclaimer, .email-note, .estimate-footnote { color:var(--text-muted); font-size:11.5px; line-height:1.55; margin-top:13px; }
+    .quote-success { text-align:left; padding:20px; }
+    .quote-success h3 { color:#fff; font-family:var(--font-serif); font-size:22px; margin-bottom:7px; }
+    .quote-success p { color:var(--text-secondary); font-size:13.5px; line-height:1.55; }
+    .success-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; }
+    .estimate-heading { font-family:var(--font-serif); color:#fff; font-size:27px; margin-bottom:5px; }
+    .estimate-intro { color:var(--text-muted); font-size:13px; margin-bottom:14px; }
+    .estimate-line strong { max-width:58%; }
+    .estimate-perks { display:grid; gap:8px; margin-top:18px; padding:14px; border-radius:12px; background:rgba(79,206,145,.07); color:var(--text-secondary); font-size:12px; }
+    .estimate-perks div::first-letter { color:var(--accent-rose); }
+    .estimate-footnote { border-top:1px solid rgba(79,206,145,.13); padding-top:13px; }
+    .field-input:invalid:not(:placeholder-shown) { border-color:rgba(255,112,112,.8); }
+    .field-input option, .field-input optgroup { background:#102017; color:#f1faf4; }
+    .gallery-tile { cursor:zoom-in; }
+    .gallery-tile img { min-height:220px; }
+    @media (max-width:780px) {
+      .hero-showcase { min-height:680px; }
+      .route-header { align-items:flex-start; flex-direction:column; }
+      .location-card { padding:14px; }
+      .success-actions .btn { flex:1 1 100%; }
+      .gallery-tile img { min-height:170px; }
+    }
+
+
+
+    /* Refined visual pass: understated, editorial, and practical. */
+    :root {
+      --bg-velvet: #f4f5f1;
+      --bg-crimson-deep: #ecefe9;
+      --bg-crimson-card: #ffffff;
+      --bg-crimson-elevated: #f7f8f5;
+      --bg-input: #ffffff;
+      --accent-velvet: #1d4932;
+      --accent-crimson: #24583a;
+      --accent-bright: #2d6745;
+      --accent-rose: #2d6745;
+      --accent-rose-soft: #315b41;
+      --text-primary: #17221b;
+      --text-secondary: #4f5d53;
+      --text-muted: #738076;
+      --border-velvet: rgba(27, 56, 37, .15);
+      --border-strong: rgba(27, 76, 45, .42);
+      --shadow-velvet: 0 8px 24px rgba(22, 39, 27, .055);
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 10px;
+      --radius-xl: 12px;
+    }
+
+    html, body { background: #f4f5f1; color: var(--text-primary); }
+    body { font-size: 15px; }
+    .container { max-width: 1160px; }
+    .section { padding: 76px 0; border-bottom: 1px solid #e2e7df; }
+    .section-crimson { background: #ecefe9; }
+    .section-header { text-align: left; max-width: 760px; margin-left: 0; margin-right: auto; margin-bottom: 34px; }
+    .eyebrow { color: #41664d; letter-spacing: .1em; font-size: 11px; }
+    .hero-heading, .section-title, .estimate-heading, .velvet-card h3 {
+      font-family: var(--font-sans);
+      letter-spacing: -.035em;
+    }
+    .section-title { color: #17221b; font-size: clamp(29px, 3.6vw, 39px); font-weight: 700; }
+    .section-subtitle { color: #59665d; max-width: 680px; }
+    .topbar {
+      background: rgba(250, 251, 248, .97);
+      border-bottom: 1px solid #e1e6df;
+      backdrop-filter: none;
+    }
+    .topbar-inner { min-height: 72px; }
+    .logo-badge { background: #fff; border: 1px solid #e4e8e2; border-radius: 5px; box-shadow: none; padding: 4px 9px; }
+    .logo-badge:hover { transform: none; }
+    .logo-badge img { height: 39px; }
+    .nav-link { color: #45534a; }
+    .nav-link:hover { color: #1d4932; }
+    .hero-showcase { min-height: min(690px, 78vh); border-bottom: 0; }
+    .hero-velvet-scrim {
+      background: linear-gradient(90deg, rgba(8, 17, 11, .82) 0%, rgba(8, 17, 11, .55) 58%, rgba(8, 17, 11, .18) 100%);
+    }
+    .hero-content { max-width: 650px; }
+    .hero-heading { font-size: clamp(36px, 5vw, 57px); letter-spacing: -.045em; line-height: 1.06; }
+    .hero-heading span { color: #c8dfce; }
+    .hero-copy { color: rgba(255,255,255,.86); max-width: 560px; font-size: 16px; }
+    .status-pill { background: rgba(15, 35, 21, .58); border: 1px solid rgba(255,255,255,.28); color: #f1f7f1; border-radius: 4px; }
+    .status-dot { background: #b9d3be; box-shadow: none; }
+    .hero-highlights { color: #f4f7f4; font-size: 13px; }
+    .hero-highlights span::before { color: #c3ddc9; }
+    .btn { border-radius: 5px; font-weight: 650; transition: background-color .16s ease, border-color .16s ease, color .16s ease; }
+    .btn-primary {
+      background: #24583a;
+      color: #fff;
+      box-shadow: none;
+    }
+    .btn-primary:hover { background: #1b452d; filter: none; transform: none; box-shadow: none; }
+    .btn-secondary { color: #26382c; background: #fff; border: 1px solid #d9e0d8; }
+    .btn-secondary:hover { background: #f1f4ef; border-color: #b8c8ba; }
+    .velvet-card, .corridor-panel, .quote-card, .estimate-card {
+      background: #fff;
+      border: 1px solid #e0e5de;
+      border-radius: 9px;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .velvet-card { padding: 25px 23px; }
+    .velvet-card:hover { transform: translateY(-2px); border-color: #c4d1c5; box-shadow: 0 8px 22px rgba(22,39,27,.045); }
+    .card-icon { background: #edf3ed; border: 1px solid #e1eae1; color: #315b3e; border-radius: 7px; }
+    .velvet-card h3 { color: #1b2920; font-size: 18px; }
+    .velvet-card p { color: #57645b; }
+    .feature-list { border-top-color: #e8ece7; color: #68756b; }
+    .feature-list li::before { color: #507258; }
+    .filter-tab { background: #fff; border-color: #dce3db; color: #45544a; border-radius: 5px; }
+    .filter-tab:hover { color: #183c28; border-color: #aabdad; }
+    .filter-tab.active { background: #24583a; border-color: #24583a; color: #fff; box-shadow: none; }
+    .gallery-tile { border-color: #dfe5dd; border-radius: 8px; }
+    .gallery-tile:hover { border-color: #b9c9bb; box-shadow: 0 8px 22px rgba(22,39,27,.06); }
+    .corridor-panel { padding: 21px; }
+    .corridor-panel h3 { color: #1b2920; }
+    .corridor-panel p { color: #59665d; }
+    .corridor-badge { color: #3c6547; background: #edf3ed; border-color: #d9e5da; border-radius: 4px; }
+    .stop-chip { background: #f5f7f3; border-color: #e2e8e0; color: #425148; border-radius: 4px; }
+    .quote-card, .estimate-card { padding: 27px; }
+    .field-label { color: #46564b; }
+    .field-input { background: #fff; border: 1px solid #d9e1d8; color: #1c2a20; border-radius: 5px; }
+    .field-input:focus { border-color: #64866b; box-shadow: 0 0 0 3px rgba(64,106,72,.10); }
+    .field-input option, .field-input optgroup { background: #fff; color: #1c2a20; }
+    .print-box, .location-card, .route-builder { background: #f7f8f5; border: 1px solid #e2e8e0; border-radius: 7px; }
+    .route-stop { background: #fff; border: 1px solid #e2e8e0; border-radius: 6px; }
+    .step-number { background: #24583a; color: #fff; border-radius: 5px; }
+    .location-index { background: #edf3ed; color: #315b3e; border-radius: 5px; }
+    .primary-tag, .route-count { background: #edf3ed; border: 1px solid #dce7dd; color: #3f6849; border-radius: 4px; }
+    .remove-stop { color: #486a50; }
+    .estimate-heading { color: #18271d; }
+    .estimate-intro, .estimate-line { color: #59665e; }
+    .estimate-line { border-bottom-color: #e8ece7; }
+    .estimate-total { color: #17251c; }
+    .estimate-total span:last-child { color: #24583a; font-family: var(--font-sans); font-size: 23px; }
+    .estimate-perks { background: #f4f7f2; color: #536157; border-radius: 6px; }
+    .estimate-perks div::first-letter { color: #356345; }
+    .estimate-footnote { border-top-color: #e5ebe4; }
+    .quote-success { background: #f2f7f1; border: 1px solid #d6e4d7; border-radius: 7px; }
+    .quote-success h3 { color: #203b29; font-family: var(--font-sans); }
+    .quote-success p { color: #4c5f50; }
+    .footer { background: #17251c; border-top: 0; }
+    .footer-note, .footer p { color: #c4d0c6 !important; }
+    .footer .logo-badge { background: #fff; }
+    .burger-btn { color: #26382c; background: #fff; border: 1px solid #d9e1d8; border-radius: 5px; }
+    .mobile-drawer { background: #fafbf8; border-bottom: 1px solid #e1e6df; }
+    .mobile-drawer a { color: #26382c; }
+    .mobile-drawer a:hover { background: #edf3ed; }
+    .action-feedback { color: #496b50; }
+    .form-disclaimer, .email-note, .estimate-footnote { color: #718075; }
+    .btn:focus-visible, .filter-tab:focus-visible, .burger-btn:focus-visible, .gallery-tile:focus-visible { outline: 2px solid #47724f; outline-offset: 3px; }
+    .email-trap { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+    .booking-submit[disabled] { opacity: .65; cursor: wait; }
+    @media (max-width: 780px) {
+      .section { padding: 54px 0; }
+      .section-header { margin-bottom: 27px; }
+      .quote-card, .estimate-card { padding: 19px 16px; }
+      .hero-showcase { min-height: 620px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       STICKY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="logo-badge" aria-label="Birds-Eye Drone Services Home">
+        <img
+          src="Add a hding (1) 2.png"
+          alt="Birds-Eye Drone Services Logo"
+          onerror="handleLogoFallback(this)"
+        />
+      </a>
+
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#transit-areas" class="nav-link">Service Areas</a>
+        <a href="#print-delivery" class="nav-link">Prints</a>
+        <a href="#quote" class="nav-link">Quote</a>
+        <a href="#quote" class="btn btn-primary btn-sm">Book Flight</a>
+      </nav>
+
+      <button type="button" class="burger-btn" id="burger-btn" aria-label="Open Navigation Menu">&#9776;</button>
+    </div>
+
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#services" onclick="closeDrawer()">Services</a>
+      <a href="#portfolio" onclick="closeDrawer()">Portfolio</a>
+      <a href="#transit-areas" onclick="closeDrawer()">Service Areas</a>
+      <a href="#print-delivery" onclick="closeDrawer()">Prints</a>
+      <a href="#quote" onclick="closeDrawer()">Quote</a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       FULL-BLEED HERO SHOWCASE
+       ======================================================================== -->
+  <main id="top">
+    <section class="hero-showcase">
+      <img
+        src="pic_20261121_030117_0002.jpg"
+        alt="Birds-Eye Auckland Aerial Showcase"
+        class="hero-bg-photo"
+        id="hero-bg-img"
+        onerror="handleAerialFallback(this, 0)"
+      />
+      <div class="hero-velvet-scrim" aria-hidden="true"></div>
+
+      <div class="container">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Auckland, New Zealand &bull; Homes, Roofs &amp; Businesses</span>
+          </div>
+
+          <h1 class="hero-heading">
+            High-Resolution Aerial <span>Photos &amp; 4K Video</span> Across Auckland
+          </h1>
+
+          <p class="hero-copy">
+            Straightforward aerial photography for Auckland homes and businesses. Book a one-off property shoot or build a multi-stop route, see your estimate update instantly, and choose optional prints.
+          </p>
+
+          <div class="hero-highlights">
+            <span>High-Resolution Photos &amp; 4K Video</span>
+            <span>Clear pricing before you book</span>
+            <span>Prints Delivered in 1&ndash;2 Weeks</span>
+          </div>
+
+          <div class="hero-cta-row">
+            <a href="#quote" class="btn btn-primary">Calculate Quote</a>
+            <a href="#portfolio" class="btn btn-secondary">Explore Gallery</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SERVICES & PHYSICAL PRINTS SHOWCASE
+         ====================================================================== -->
+    <section id="services" class="section section-crimson">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Aerial Capabilities</span>
+          <h2 class="section-title">Residential, Commercial &amp; Print Services</h2>
+          <p class="section-subtitle">
+            Every flight is planned around Auckland weather and controlled airspace rules to deliver sharp high-resolution photos, smooth 4K video, and optional physical prints.
+          </p>
+        </div>
+
+        <div class="cards-grid-3">
+          <!-- Card 1 -->
+          <article class="velvet-card">
+            <div>
+              <div class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+              </div>
+              <h3>Residential &amp; Commercial Photos &amp; 4K Video</h3>
+              <p>
+                High-resolution photos and smooth 4K video for property listings, architectural marketing, hospitality venues, and commercial premises across Auckland.
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li>Full-resolution stills &amp; web-ready exports</li>
+              <li>Stabilised 4K video sweeps, reveals &amp; orbits</li>
+              <li>Fast digital delivery link</li>
+            </ul>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="velvet-card">
+            <div>
+              <div class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <h3>Roof &amp; Site Surveys</h3>
+              <p>
+                Safe, close-range high-resolution photos and 4K video inspections for roofs, gutters, flashings, civil earthworks, and commercial construction milestones.
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li>Zero-ladder roof &amp; ridge visual checks</li>
+              <li>Clear detail for builders, insurers &amp; owners</li>
+              <li>Repeatable angles for site progress tracking</li>
+            </ul>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="velvet-card" id="print-delivery">
+            <div>
+              <div class="card-icon" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+              <h3>Physical Prints &amp; 1&ndash;2 Week Delivery</h3>
+              <p>
+                Order physical prints of your captured high-resolution photos in matte, gloss, canvas, or framed finishes &mdash; printed and delivered within 1&ndash;2 weeks.
+              </p>
+            </div>
+            <ul class="feature-list">
+              <li>A3, A2, and A1 print sizes available</li>
+              <li>Matte, gloss, canvas &amp; framed options</li>
+              <li>Delivered to your door in 1&ndash;2 weeks</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CAPTION-FREE FILTERABLE GALLERY & LIGHTBOX
+         ====================================================================== -->
+    <section id="portfolio" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Aerial Gallery</span>
+          <h2 class="section-title">Captured From Above</h2>
+          <p class="section-subtitle">
+            Filter shots by view type or click any photo to open the full-screen viewer.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="tablist" aria-label="Gallery Categories">
+          <button type="button" class="filter-tab active" data-filter="all">All</button>
+          <button type="button" class="filter-tab" data-filter="elevated">Elevated Views</button>
+          <button type="button" class="filter-tab" data-filter="property-pool">Property &amp; Pool</button>
+          <button type="button" class="filter-tab" data-filter="grounds-sheds">Grounds &amp; Sheds</button>
+        </div>
+
+        <div class="gallery-grid" id="gallery-grid">
+          <div class="gallery-tile" data-categories="elevated grounds-sheds" data-src="pic_20261121_030117_0002.jpg" data-variant="0" onclick="openViewer(0)">
+            <img src="pic_20261121_030117_0002.jpg" alt="Aerial view 1" onerror="handleAerialFallback(this, 0)" />
+          </div>
+
+          <div class="gallery-tile" data-categories="property-pool" data-src="pic_20261121_025406_0003.jpg" data-variant="1" onclick="openViewer(1)">
+            <img src="pic_20261121_025406_0003.jpg" alt="Aerial view 2" onerror="handleAerialFallback(this, 1)" />
+          </div>
+
+          <div class="gallery-tile" data-categories="property-pool elevated" data-src="pic_20261121_025640_0004.jpg" data-variant="2" onclick="openViewer(2)">
+            <img src="pic_20261121_025640_0004.jpg" alt="Aerial view 3" onerror="handleAerialFallback(this, 2)" />
+          </div>
+
+          <div class="gallery-tile" data-categories="grounds-sheds" data-src="pic_20261121_025654_0005.jpg" data-variant="3" onclick="openViewer(3)">
+            <img src="pic_20261121_025654_0005.jpg" alt="Aerial view 4" onerror="handleAerialFallback(this, 3)" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         AUCKLAND SERVICE AREAS
+         ====================================================================== -->
+    <section id="transit-areas" class="section section-crimson">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Where We Fly</span>
+          <h2 class="section-title">Auckland-wide service areas</h2>
+          <p class="section-subtitle">Choose your suburb when requesting a quote. We cover a wide range of Auckland locations, with outer-area and restricted-airspace jobs confirmed before a booking is accepted.</p>
+        </div>
+
+        <div class="corridors-grid">
+          <div class="corridor-panel">
+            <h3>West Auckland <span class="corridor-badge">West</span></h3>
+            <p>Local residential and lifestyle properties across the west.</p>
+            <div class="stops-tags"><span class="stop-chip">Henderson</span><span class="stop-chip">Westgate</span><span class="stop-chip">Massey</span><span class="stop-chip">Hobsonville</span><span class="stop-chip">Whenuapai</span><span class="stop-chip">Te Atatū</span><span class="stop-chip">New Lynn</span><span class="stop-chip">Titirangi</span><span class="stop-chip">Glen Eden</span><span class="stop-chip">Oratia</span><span class="stop-chip">Swanson</span><span class="stop-chip">Ranui</span><span class="stop-chip">Kumeū</span><span class="stop-chip">Huapai</span><span class="stop-chip">Waimauku</span></div>
+          </div>
+          <div class="corridor-panel">
+            <h3>Central Auckland <span class="corridor-badge">Central</span></h3>
+            <p>Central suburbs and inner-city neighbourhoods.</p>
+            <div class="stops-tags"><span class="stop-chip">Auckland CBD</span><span class="stop-chip">Ponsonby</span><span class="stop-chip">Grey Lynn</span><span class="stop-chip">Freemans Bay</span><span class="stop-chip">Mount Eden</span><span class="stop-chip">Epsom</span><span class="stop-chip">Newmarket</span><span class="stop-chip">Kingsland</span><span class="stop-chip">Morningside</span><span class="stop-chip">Mount Albert</span><span class="stop-chip">Sandringham</span><span class="stop-chip">Onehunga</span><span class="stop-chip">Herne Bay</span><span class="stop-chip">Parnell</span></div>
+          </div>
+          <div class="corridor-panel">
+            <h3>North Shore <span class="corridor-badge">North</span></h3>
+            <p>From the harbour-side suburbs to the northern growth areas.</p>
+            <div class="stops-tags"><span class="stop-chip">Takapuna</span><span class="stop-chip">Devonport</span><span class="stop-chip">Belmont</span><span class="stop-chip">Bayswater</span><span class="stop-chip">Milford</span><span class="stop-chip">Mairangi Bay</span><span class="stop-chip">Campbells Bay</span><span class="stop-chip">Albany</span><span class="stop-chip">Rosedale</span><span class="stop-chip">Sunnynook</span><span class="stop-chip">Glenfield</span><span class="stop-chip">Birkenhead</span><span class="stop-chip">Beach Haven</span><span class="stop-chip">Long Bay</span><span class="stop-chip">Silverdale</span></div>
+          </div>
+          <div class="corridor-panel">
+            <h3>East Auckland <span class="corridor-badge">East</span></h3>
+            <p>Eastern bays, residential neighbourhoods and surrounding areas.</p>
+            <div class="stops-tags"><span class="stop-chip">Ōrākei</span><span class="stop-chip">Mission Bay</span><span class="stop-chip">Saint Heliers</span><span class="stop-chip">Kohimarama</span><span class="stop-chip">Glendowie</span><span class="stop-chip">Glen Innes</span><span class="stop-chip">Panmure</span><span class="stop-chip">Half Moon Bay</span><span class="stop-chip">Bucklands Beach</span><span class="stop-chip">Howick</span><span class="stop-chip">Botany</span><span class="stop-chip">Dannemora</span><span class="stop-chip">Flat Bush</span><span class="stop-chip">Ōtāhuhu</span></div>
+          </div>
+          <div class="corridor-panel">
+            <h3>South Auckland <span class="corridor-badge">South</span></h3>
+            <p>Residential and commercial properties throughout the south.</p>
+            <div class="stops-tags"><span class="stop-chip">Ellerslie</span><span class="stop-chip">Penrose</span><span class="stop-chip">Papatoetoe</span><span class="stop-chip">Manukau</span><span class="stop-chip">Ōtara</span><span class="stop-chip">Papakura</span><span class="stop-chip">Takanini</span><span class="stop-chip">Drury</span><span class="stop-chip">Wiri</span><span class="stop-chip">Clevedon</span><span class="stop-chip">Beachlands</span><span class="stop-chip">Maraetai</span></div>
+          </div>
+          <div class="corridor-panel">
+            <h3>Outer Auckland <span class="corridor-badge">By arrangement</span></h3>
+            <p>Longer-distance locations can be discussed as part of a custom booking.</p>
+            <div class="stops-tags"><span class="stop-chip">Waiuku</span><span class="stop-chip">Pukekohe</span><span class="stop-chip">Warkworth</span><span class="stop-chip">Matakana</span><span class="stop-chip">Snells Beach</span><span class="stop-chip">Waiheke Island</span><span class="stop-chip">Great Barrier Island</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INTERACTIVE QUOTE & PRINT CALCULATOR / FORM
+         ====================================================================== -->
+    <section id="quote" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Instant Estimate &amp; Booking</span>
+          <h2 class="section-title">Build your booking</h2>
+          <p class="section-subtitle">
+            Choose a service, select one suburb or build a multi-stop Auckland route, and see your estimate update instantly.
+          </p>
+        </div>
+
+        <div class="quote-layout">
+          <form class="quote-card" id="quote-form">
+            <div class="form-step-heading"><span class="step-number">01</span><div><strong>Booking details</strong><small>Tell us who to contact and what you need captured.</small></div></div>
+            <div class="form-grid-2">
+              <div class="field-group"><label class="field-label" for="full-name">Your name *</label><input type="text" id="full-name" class="field-input" required autocomplete="name" placeholder="Your full name" /></div>
+              <div class="field-group"><label class="field-label" for="email-addr">Email address *</label><input type="email" id="email-addr" class="field-input" required autocomplete="email" placeholder="you@example.co.nz" /></div>
+            </div>
+            <div class="form-grid-2">
+              <div class="field-group"><label class="field-label" for="phone-number">Phone number</label><input type="tel" id="phone-number" class="field-input" autocomplete="tel" placeholder="Optional contact number" /></div>
+              <div class="field-group"><label class="field-label" for="service-select">What do you need? *</label>
+                <select id="service-select" class="field-input" required>
+                  <option value="house-photos" data-price="75" data-label="Standard house shoot — photos">Standard house shoot · Photos ($75)</option>
+                  <option value="house-video" data-price="105" data-label="House shoot — photos + 4K video">House shoot · Photos + 4K video ($105)</option>
+                  <option value="roof-survey" data-price="90" data-label="Roof / property overview">Roof / property overview ($90)</option>
+                  <option value="commercial-pack" data-price="135" data-label="Small commercial property shoot">Small commercial property ($135)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-step-heading location-step"><span class="step-number">02</span><div><strong>Choose your location or route</strong><small>Book one property or add several stops to the same trip.</small></div></div>
+            <div class="field-group">
+              <label class="field-label" for="booking-mode">Booking type</label>
+              <select id="booking-mode" class="field-input"><option value="single">Single location</option><option value="route">Multi-stop route</option></select>
+            </div>
+            <div class="location-card">
+              <div class="location-card-title"><span class="location-index">1</span><strong>First shoot location</strong><span class="primary-tag">Main stop</span></div>
+              <div class="form-grid-2">
+                <div class="field-group"><label class="field-label" for="location-select">Suburb / area *</label><select id="location-select" class="field-input" required><option value="">Choose an Auckland area</option>
+                  <optgroup label="West Auckland"><option>Henderson</option><option>Westgate</option><option>Massey</option><option>Hobsonville</option><option>Whenuapai</option><option>Te Atatū Peninsula</option><option>Te Atatū South</option><option>New Lynn</option><option>Titirangi</option><option>Glen Eden</option><option>Oratia</option><option>Swanson</option><option>Ranui</option><option>Sunnyvale</option><option>Glenavon</option><option>Green Bay</option><option>Laingholm</option><option>Huia</option><option>Kumeū</option><option>Huapai</option><option>Waimauku</option></optgroup>
+                  <optgroup label="Central Auckland"><option>Auckland CBD</option><option>Freemans Bay</option><option>Ponsonby</option><option>Grey Lynn</option><option>Westmere</option><option>Herne Bay</option><option>Parnell</option><option>Newmarket</option><option>Mount Eden</option><option>Epsom</option><option>Kingsland</option><option>Morningside</option><option>Mount Albert</option><option>Sandringham</option><option>Three Kings</option><option>One Tree Hill</option><option>Onehunga</option><option>Ellerslie</option><option>Greenlane</option><option>Ōrākei</option><option>Mission Bay</option><option>Saint Heliers</option><option>Kohimarama</option><option>Glendowie</option></optgroup>
+                  <optgroup label="North Shore"><option>Devonport</option><option>Takapuna</option><option>Belmont</option><option>Bayswater</option><option>Milford</option><option>Hauraki</option><option>Northcote</option><option>Birkenhead</option><option>Beach Haven</option><option>Glenfield</option><option>Wairau Valley</option><option>Mairangi Bay</option><option>Campbells Bay</option><option>Albany</option><option>Rosedale</option><option>Sunnynook</option><option>Long Bay</option><option>Torbay</option><option>Silverdale</option><option>Ōrewa</option></optgroup>
+                  <optgroup label="East Auckland"><option>Glen Innes</option><option>Panmure</option><option>Point England</option><option>Half Moon Bay</option><option>Pakuranga</option><option>Highland Park</option><option>Howick</option><option>Botany</option><option>Dannemora</option><option>Flat Bush</option><option>East Tāmaki</option><option>Beachlands</option><option>Maraetai</option></optgroup>
+                  <optgroup label="South Auckland"><option>Penrose</option><option>Mount Wellington</option><option>Ōtāhuhu</option><option>Ōtara</option><option>Papatoetoe</option><option>Manukau</option><option>Wiri</option><option>Manurewa</option><option>Clendon Park</option><option>Takanini</option><option>Papakura</option><option>Drury</option><option>Pukekohe</option><option>Waiuku</option><option>Clevedon</option></optgroup>
+                  <optgroup label="Rodney &amp; outer areas"><option>Warkworth</option><option>Matakana</option><option>Snells Beach</option><option>Helensville</option><option>Riverhead</option><option>Waiheke Island</option><option>Great Barrier Island</option></optgroup>
+                  <option value="Other / not listed">Other / not listed</option>
+                </select></div>
+                <div class="field-group"><label class="field-label" for="main-address">Street address *</label><input id="main-address" class="field-input" required autocomplete="street-address" placeholder="Street number and name" /></div>
+              </div>
+            </div>
+
+            <div id="route-builder" class="route-builder" hidden>
+              <div class="route-header"><div><strong>Additional route stops</strong><small>Each extra location adds $35 to the estimate.</small></div><span id="route-count" class="route-count">1 of 6 locations</span></div>
+              <div id="extra-stops"></div>
+              <button type="button" class="btn btn-secondary btn-sm add-stop-btn" id="add-stop-btn">＋ Add another stop</button>
+            </div>
+
+            <div class="form-grid-2 date-grid">
+              <div class="field-group"><label class="field-label" for="preferred-date">Preferred date</label><input type="date" id="preferred-date" class="field-input" /></div>
+              <div class="field-group"><label class="field-label" for="preferred-time">Preferred time</label><select id="preferred-time" class="field-input"><option value="Flexible">Flexible</option><option value="Morning">Morning</option><option value="Midday">Midday</option><option value="Afternoon">Afternoon</option><option value="Sunset (weather permitting)">Sunset (weather permitting)</option></select></div>
+            </div>
+
+            <div class="print-box">
+              <label class="print-toggle" for="print-enabled"><input type="checkbox" id="print-enabled" /><div><strong style="display:block;font-size:14.5px;color:#ffffff;">Add a physical print</strong><span style="display:block;font-size:13px;color:var(--text-muted);margin-top:2px;">Optional photo print. Delivery estimate: 1–2 weeks.</span></div></label>
+              <div class="print-fields" id="print-fields">
+                <div class="field-group" style="margin-bottom:0;"><label class="field-label" for="print-size-select">Print size</label><select id="print-size-select" class="field-input"><option value="A3" data-add="20">A3 print (+$20)</option><option value="A2" data-add="32" selected>A2 print (+$32)</option><option value="A1" data-add="45">A1 print (+$45)</option></select></div>
+                <div class="field-group" style="margin-bottom:0;"><label class="field-label" for="print-finish-select">Print finish</label><select id="print-finish-select" class="field-input"><option value="Matte" data-add="0" selected>Matte (+$0)</option><option value="Gloss" data-add="5">Gloss (+$5)</option><option value="Canvas" data-add="25">Canvas (+$25)</option><option value="Framed" data-add="40">Framed (+$40)</option></select></div>
+              </div>
+            </div>
+
+            <div class="field-group"><label class="field-label" for="notes-input">Anything else we should know?</label><textarea id="notes-input" rows="4" class="field-input" placeholder="Property access, preferred angles, special requests, or extra details..."></textarea></div>
+            <button type="submit" class="btn btn-primary booking-submit">Send quote request <span aria-hidden="true">→</span></button>
+            <div class="email-trap" aria-hidden="true"><label for="company-website">Leave this field empty</label><input id="company-website" type="text" name="_honey" tabindex="-1" autocomplete="off" /></div>
+            <p class="form-disclaimer">Your estimate is a guide, not a confirmed booking. Quote details are emailed to romanflint@icloud.com via FormSubmit. The first submission triggers a one-time inbox confirmation so email delivery can be activated.</p>
+            <div class="quote-success" id="quote-success" aria-live="polite">
+              <h3>Request status</h3>
+              <p id="quote-success-text"></p>
+              <div class="success-actions"><button type="button" class="btn btn-primary btn-sm" id="email-request-btn">Open email draft</button><button type="button" class="btn btn-secondary btn-sm" onclick="downloadQuoteSummary()">Download request</button><button type="button" class="btn btn-secondary btn-sm" onclick="resetFormState()">Edit request</button></div>
+              <p class="email-note" id="email-note">Your request will be emailed to romanflint@icloud.com. No payment is taken and the booking is not confirmed until availability is checked.</p>
+            </div>
+          </form>
+
+          <aside class="estimate-card" aria-label="Live quote estimate">
+            <span class="eyebrow" style="margin-bottom:4px;">Live estimate</span>
+            <h3 class="estimate-heading">Your quote</h3>
+            <p class="estimate-intro">A clear price breakdown that updates as you customise your shoot.</p>
+            <div class="estimate-line"><span>Service</span><strong id="est-service-label">Standard house shoot — photos</strong></div>
+            <div class="estimate-line"><span>First location</span><span id="est-base-price">$75 NZD</span></div>
+            <div class="estimate-line"><span>Additional route stops</span><span id="est-route-price">$0 NZD</span></div>
+            <div class="estimate-line"><span>Locations selected</span><span id="est-location-count">1 location</span></div>
+            <div class="estimate-line"><span>Print add-on</span><span id="est-print-price">Not included</span></div>
+            <div class="estimate-total"><span>Estimated total</span><span id="est-total-price">$75 NZD</span></div>
+            <div class="estimate-perks"><div>✓ No charge for choosing a suburb</div><div>✓ Extra route stops priced upfront</div><div>✓ No payment taken at this stage</div></div>
+            <div class="estimate-actions"><button type="button" class="btn btn-secondary btn-sm" onclick="copyQuoteSummary()">Copy summary</button><button type="button" class="btn btn-secondary btn-sm" onclick="downloadQuoteSummary()">Download .TXT</button></div>
+            <div class="action-feedback" id="action-feedback" role="status"></div>
+            <p class="estimate-footnote">All prices are in NZD. Multi-stop pricing assumes nearby locations on the same outing; longer-distance travel or complex commercial work may need a custom quote.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="#top" class="logo-badge" aria-label="Birds-Eye Drone Services">
+          <img
+            src="Add a hding (1) 2.png"
+            alt="Birds-Eye Drone Services Logo"
+            onerror="handleLogoFallback(this)"
+          />
+        </a>
+        <p class="footer-note">
+          Birds-Eye Drone Services &mdash; Residential and commercial aerial photography, 4K video, and 1&ndash;2 week physical print delivery across Auckland, New Zealand.
+        </p>
+      </div>
+
+      <div style="text-align: left;">
+        <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 4px;">
+          Auckland, New Zealand &bull; Auckland-wide service areas
+        </p>
+        <p style="font-size: 12.5px; color: var(--text-muted);">
+          &copy; 2026 Birds-Eye Drone Services. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       FULL-SCREEN LIGHTBOX VIEWER
+       ======================================================================== -->
+  <div class="lightbox-modal" id="lightbox-modal" onclick="handleBackdropClick(event)">
+    <div class="lightbox-stage">
+      <img id="lightbox-photo" src="" alt="Full-screen aerial view" />
+      <div class="lightbox-controls">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="stepViewer(-1)">&larr; Prev</button>
+        <span class="lightbox-counter" id="lightbox-counter">1 / 4</span>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="stepViewer(1)">Next &rarr;</button>
+        <button type="button" class="btn btn-primary btn-sm" onclick="closeViewer()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SELF-CONTAINED JAVASCRIPT (GALLERY, LIGHTBOX, CALCULATOR, FALLBACKS)
+       ======================================================================== -->
+  <script>
+    // 1. Mobile Navigation Drawer
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+
+    burgerBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('open');
+    });
+
+    function closeDrawer() {
+      mobileDrawer.classList.remove('open');
+    }
+
+    // 2. Inline SVG / Canvas-Style Fallback Handler for Standalone Viewing
+    const cachedFallbacks = {};
+
+    function handleLogoFallback(img) {
+      if (img.dataset.fallbackDone) return;
+      img.dataset.fallbackDone = 'true';
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="60" viewBox="0 0 220 60">
+        <rect width="220" height="60" fill="#ffffff"/>
+        <path d="M16 30 C30 10, 58 10, 70 24 L104 34 L68 31 C56 42, 32 42, 16 30 Z" fill="none" stroke="#111111" stroke-width="2.8"/>
+        <circle cx="52" cy="23" r="6.5" fill="none" stroke="#111111" stroke-width="2.4"/>
+        <circle cx="54" cy="22" r="2.2" fill="#111111"/>
+        <text x="110" y="32" font-family="Georgia, serif" font-size="21" font-weight="bold" fill="#111111">Birds-Eye</text>
+        <text x="111" y="47" font-family="Georgia, serif" font-size="11" font-weight="bold" fill="#333333">Drone Services</text>
+      </svg>`;
+      img.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    function buildAerialFallback(index) {
+      if (cachedFallbacks[index]) return cachedFallbacks[index];
+      const canvas = document.createElement('canvas');
+      canvas.width = 1280;
+      canvas.height = 800;
+      const ctx = canvas.getContext('2d');
+      const scenes = [
+        { bg: '#16281e', ridge1: '#274434', ridge2: '#375c47', accent: '#38bdf8' },
+        { bg: '#182c21', ridge1: '#2b4b39', ridge2: '#3e664f', accent: '#22d3ee' },
+        { bg: '#14241b', ridge1: '#233e2f', ridge2: '#345642', accent: '#38bdf8' },
+        { bg: '#192e23', ridge1: '#2d4e3c', ridge2: '#416b53', accent: '#0ea5e9' }
+      ];
+      const s = scenes[index % scenes.length];
+      ctx.fillStyle = s.bg;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = s.ridge1;
+      ctx.beginPath();
+      ctx.moveTo(0, 260);
+      ctx.quadraticCurveTo(420, 170, 840, 270);
+      ctx.lineTo(1280, 220);
+      ctx.lineTo(1280, 800);
+      ctx.lineTo(0, 800);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = s.ridge2;
+      ctx.beginPath();
+      ctx.moveTo(0, 460);
+      ctx.quadraticCurveTo(520, 360, 960, 480);
+      ctx.lineTo(1280, 430);
+      ctx.lineTo(1280, 800);
+      ctx.lineTo(0, 800);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#475569';
+      ctx.beginPath();
+      ctx.moveTo(520, 280);
+      ctx.lineTo(690, 235);
+      ctx.lineTo(820, 290);
+      ctx.lineTo(650, 338);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = s.accent;
+      ctx.fillRect(680, 390, 120, 42);
+
+      cachedFallbacks[index] = canvas.toDataURL('image/png');
+      return cachedFallbacks[index];
+    }
+
+    function handleAerialFallback(img, index) {
+      if (img.dataset.fallbackDone) return;
+      img.dataset.fallbackDone = 'true';
+      img.src = buildAerialFallback(index);
+    }
+
+    // 3. Filter Tabs & Full-Screen Lightbox Viewer
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const galleryTiles = Array.from(document.querySelectorAll('.gallery-tile'));
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxPhoto = document.getElementById('lightbox-photo');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    let visibleTiles = galleryTiles.slice();
+    let currentViewerIndex = 0;
+
+    filterTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+
+        visibleTiles = [];
+        galleryTiles.forEach((tile) => {
+          const cats = tile.dataset.categories.split(/\s+/);
+          const match = filter === 'all' || cats.includes(filter);
+          tile.classList.toggle('hidden', !match);
+          if (match) visibleTiles.push(tile);
+        });
+      });
+    });
+
+    function renderViewerPhoto() {
+      if (!visibleTiles.length) return;
+      const tile = visibleTiles[currentViewerIndex];
+      const src = tile.dataset.src;
+      const variant = Number(tile.dataset.variant || 0);
+      lightboxPhoto.dataset.fallbackDone = '';
+      lightboxPhoto.onerror = () => handleAerialFallback(lightboxPhoto, variant);
+      lightboxPhoto.src = src;
+      lightboxCounter.textContent = `${currentViewerIndex + 1} / ${visibleTiles.length}`;
+    }
+
+    function openViewer(tileIndex) {
+      const targetTile = galleryTiles[tileIndex];
+      const idx = visibleTiles.indexOf(targetTile);
+      currentViewerIndex = idx >= 0 ? idx : 0;
+      renderViewerPhoto();
+      lightboxModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function stepViewer(delta) {
+      if (!visibleTiles.length) return;
+      currentViewerIndex = (currentViewerIndex + delta + visibleTiles.length) % visibleTiles.length;
+      renderViewerPhoto();
+    }
+
+    function closeViewer() {
+      lightboxModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleBackdropClick(e) {
+      if (e.target === lightboxModal) closeViewer();
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxModal.classList.contains('open')) return;
+      if (e.key === 'Escape') closeViewer();
+      if (e.key === 'ArrowRight') stepViewer(1);
+      if (e.key === 'ArrowLeft') stepViewer(-1);
+    });
+
+    // 4. Quote calculator, multi-stop route builder, and request export.
+    const serviceSelect = document.getElementById('service-select');
+    const bookingMode = document.getElementById('booking-mode');
+    const locationSelect = document.getElementById('location-select');
+    const mainAddress = document.getElementById('main-address');
+    const routeBuilder = document.getElementById('route-builder');
+    const extraStops = document.getElementById('extra-stops');
+    const addStopBtn = document.getElementById('add-stop-btn');
+    const routeCount = document.getElementById('route-count');
+    const printEnabled = document.getElementById('print-enabled');
+    const printFields = document.getElementById('print-fields');
+    const printSizeSelect = document.getElementById('print-size-select');
+    const printFinishSelect = document.getElementById('print-finish-select');
+    const estServiceLabel = document.getElementById('est-service-label');
+    const estBasePrice = document.getElementById('est-base-price');
+    const estRoutePrice = document.getElementById('est-route-price');
+    const estLocationCount = document.getElementById('est-location-count');
+    const estPrintPrice = document.getElementById('est-print-price');
+    const estTotalPrice = document.getElementById('est-total-price');
+    const actionFeedback = document.getElementById('action-feedback');
+    const quoteForm = document.getElementById('quote-form');
+    const quoteSuccess = document.getElementById('quote-success');
+    const quoteSuccessText = document.getElementById('quote-success-text');
+    const quoteSuccessHeading = quoteSuccess.querySelector('h3');
+    const emailRequestBtn = document.getElementById('email-request-btn');
+    const emailNote = document.getElementById('email-note');
+    const MAX_LOCATIONS = 6;
+    const EXTRA_STOP_PRICE = 35;
+    let preparedRequestText = '';
+
+    // All quote requests are sent to the Birds-Eye inbox through FormSubmit.
+    // FormSubmit requires a one-time inbox confirmation before delivery is activated.
+    const BUSINESS_EMAIL = 'romanflint@icloud.com';
+    const FORM_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${BUSINESS_EMAIL}`;
+
+    const locationOptionsHTML = locationSelect.innerHTML
+      .replace('<option value="">Choose an Auckland area</option>', '<option value="">Choose an Auckland area</option>');
+
+    function money(amount) {
+      return new Intl.NumberFormat('en-NZ', { style: 'currency', currency: 'NZD', maximumFractionDigits: 0 }).format(amount);
+    }
+
+    function getAdditionalStopElements() {
+      return Array.from(extraStops.querySelectorAll('.route-stop'));
+    }
+
+    function getLocations() {
+      const locations = [{
+        suburb: locationSelect.value,
+        address: mainAddress.value.trim(),
+        label: 'Main location'
+      }];
+      getAdditionalStopElements().forEach((stop, index) => {
+        locations.push({
+          suburb: stop.querySelector('.route-stop-select').value,
+          address: stop.querySelector('.route-stop-address').value.trim(),
+          label: `Stop ${index + 2}`
+        });
+      });
+      return locations;
+    }
+
+    function addRouteStop() {
+      const count = getAdditionalStopElements().length;
+      if (count >= MAX_LOCATIONS - 1) {
+        actionFeedback.textContent = `A route can include up to ${MAX_LOCATIONS} locations.`;
+        return;
+      }
+      const stopNumber = count + 2;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'route-stop';
+      wrapper.innerHTML = `
+        <div class="route-stop-heading"><strong>Stop ${stopNumber}</strong><button type="button" class="remove-stop">Remove stop</button></div>
+        <div class="field-group"><label class="field-label">Suburb / area *</label><select class="field-input route-stop-select" required>${locationOptionsHTML}</select></div>
+        <div class="field-group"><label class="field-label">Street address (optional)</label><input class="field-input route-stop-address" type="text" placeholder="Street number and name" /></div>`;
+      wrapper.querySelector('.remove-stop').addEventListener('click', () => {
+        wrapper.remove();
+        renumberRouteStops();
+        updateEstimateUI();
+      });
+      wrapper.querySelector('.route-stop-select').addEventListener('change', updateEstimateUI);
+      extraStops.appendChild(wrapper);
+      renumberRouteStops();
+      updateEstimateUI();
+      wrapper.querySelector('.route-stop-select').focus();
+    }
+
+    function renumberRouteStops() {
+      const stops = getAdditionalStopElements();
+      stops.forEach((stop, index) => {
+        stop.querySelector('.route-stop-heading strong').textContent = `Stop ${index + 2}`;
+      });
+      const total = stops.length + 1;
+      routeCount.textContent = `${total} of ${MAX_LOCATIONS} locations`;
+      addStopBtn.disabled = total >= MAX_LOCATIONS;
+      addStopBtn.textContent = total >= MAX_LOCATIONS ? 'Maximum locations reached' : '＋ Add another stop';
+    }
+
+    function syncBookingMode() {
+      const isRoute = bookingMode.value === 'route';
+      routeBuilder.hidden = !isRoute;
+      if (!isRoute) {
+        extraStops.innerHTML = '';
+      } else if (getAdditionalStopElements().length === 0) {
+        addRouteStop();
+      }
+      renumberRouteStops();
+      updateEstimateUI();
+    }
+
+    function getQuoteBreakdown() {
+      const selectedService = serviceSelect.selectedOptions[0];
+      const baseAmount = Number(selectedService.dataset.price || 75);
+      const serviceText = selectedService.dataset.label || selectedService.textContent.trim();
+      const locations = getLocations();
+      const extraLocationCount = Math.max(0, locations.length - 1);
+      const routeAmount = extraLocationCount * EXTRA_STOP_PRICE;
+      let printAmount = 0;
+      let printText = 'Not included';
+      if (printEnabled.checked) {
+        const sizeOption = printSizeSelect.selectedOptions[0];
+        const finishOption = printFinishSelect.selectedOptions[0];
+        printAmount = Number(sizeOption.dataset.add || 0) + Number(finishOption.dataset.add || 0);
+        printText = `${sizeOption.value} ${finishOption.value} (${money(printAmount)}, 1–2 weeks)`;
+      }
+      return {
+        serviceText, baseAmount, locations, extraLocationCount, routeAmount,
+        printAmount, printText, totalAmount: baseAmount + routeAmount + printAmount
+      };
+    }
+
+    function updateEstimateUI() {
+      const quote = getQuoteBreakdown();
+      printFields.classList.toggle('open', printEnabled.checked);
+      estServiceLabel.textContent = quote.serviceText;
+      estBasePrice.textContent = `${money(quote.baseAmount)} NZD`;
+      estRoutePrice.textContent = `${money(quote.routeAmount)} NZD`;
+      estLocationCount.textContent = `${quote.locations.length} ${quote.locations.length === 1 ? 'location' : 'locations'}`;
+      estPrintPrice.textContent = quote.printText;
+      estTotalPrice.textContent = `${money(quote.totalAmount)} NZD`;
+      renumberRouteStops();
+    }
+
+    [serviceSelect, locationSelect, printEnabled, printSizeSelect, printFinishSelect].forEach((element) => {
+      element.addEventListener('change', updateEstimateUI);
+    });
+    bookingMode.addEventListener('change', syncBookingMode);
+    addStopBtn.addEventListener('click', addRouteStop);
+    document.getElementById('preferred-date').min = new Date().toLocaleDateString('en-CA');
+
+    function buildSummaryText() {
+      const quote = getQuoteBreakdown();
+      const name = document.getElementById('full-name').value.trim() || 'Not provided';
+      const email = document.getElementById('email-addr').value.trim() || 'Not provided';
+      const phone = document.getElementById('phone-number').value.trim() || 'Not provided';
+      const date = document.getElementById('preferred-date').value || 'Flexible / to be arranged';
+      const time = document.getElementById('preferred-time').value;
+      const notes = document.getElementById('notes-input').value.trim() || 'None';
+      const mode = bookingMode.value === 'route' ? 'Multi-stop route' : 'Single location';
+      const locationLines = quote.locations.map((location, index) =>
+        `${index + 1}. ${location.suburb || 'Not selected'}${location.address ? ` — ${location.address}` : ''}`
+      );
+      return [
+        'BIRDS-EYE DRONE SERVICES — BOOKING REQUEST',
+        '===========================================',
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Phone: ${phone}`,
+        `Service: ${quote.serviceText}`,
+        `Booking type: ${mode}`,
+        'Locations:',
+        ...locationLines,
+        `Preferred date: ${date}`,
+        `Preferred time: ${time}`,
+        `First location / service: ${money(quote.baseAmount)}`,
+        `Additional route stops: ${quote.extraLocationCount} × ${money(EXTRA_STOP_PRICE)} = ${money(quote.routeAmount)}`,
+        `Print add-on: ${quote.printText}`,
+        `ESTIMATED TOTAL: ${money(quote.totalAmount)} NZD`,
+        '',
+        `Notes: ${notes}`,
+        '',
+        'Please confirm flight feasibility, availability, and the final quote before accepting this booking.'
+      ].join('\n');
+    }
+
+    async function copyText(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      let copied = false;
+      try { copied = document.execCommand('copy'); } catch (error) { copied = false; }
+      textarea.remove();
+      return copied;
+    }
+
+    async function copyQuoteSummary() {
+      try {
+        const copied = await copyText(preparedRequestText || buildSummaryText());
+        actionFeedback.textContent = copied ? 'Booking summary copied.' : 'Clipboard access was blocked. Use Download .TXT instead.';
+      } catch (error) {
+        actionFeedback.textContent = 'Clipboard access was blocked. Use Download .TXT instead.';
+      }
+    }
+
+    function downloadQuoteSummary() {
+      const text = preparedRequestText || buildSummaryText();
+      const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = 'birds-eye-booking-request.txt';
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1500);
+      actionFeedback.textContent = 'Booking request downloaded.';
+    }
+
+    function openEmailDraft() {
+      const text = preparedRequestText || buildSummaryText();
+      const subject = encodeURIComponent('Birds-Eye drone shoot booking request');
+      const body = encodeURIComponent(text);
+      const recipient = encodeURIComponent(BUSINESS_EMAIL);
+      window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      emailNote.textContent = `An email draft addressed to ${BUSINESS_EMAIL} should open. Check it and press Send.`;
+    }
+    emailRequestBtn.addEventListener('click', openEmailDraft);
+
+    function makeSubmissionPayload() {
+      const quote = getQuoteBreakdown();
+      const name = document.getElementById('full-name').value.trim();
+      const email = document.getElementById('email-addr').value.trim();
+      const phone = document.getElementById('phone-number').value.trim();
+      const date = document.getElementById('preferred-date').value || 'Flexible / to be arranged';
+      const time = document.getElementById('preferred-time').value || 'Flexible';
+      return {
+        name,
+        email,
+        phone: phone || 'Not provided',
+        service: quote.serviceText,
+        booking_type: bookingMode.value === 'route' ? 'Multi-stop route' : 'Single location',
+        locations: quote.locations.map((location, index) =>
+          `${index + 1}. ${location.suburb}${location.address ? ` — ${location.address}` : ''}`
+        ).join('\n'),
+        preferred_date: date,
+        preferred_time: time,
+        base_price_nzd: money(quote.baseAmount),
+        additional_stops: String(quote.extraLocationCount),
+        additional_stops_price_nzd: money(quote.routeAmount),
+        print_option: quote.printText,
+        estimated_total_nzd: money(quote.totalAmount),
+        notes: document.getElementById('notes-input').value.trim() || 'None',
+        message: preparedRequestText,
+        _subject: `New Birds-Eye quote request — ${name}`,
+        _template: 'table',
+        _honey: ''
+      };
+    }
+
+    quoteForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!quoteForm.reportValidity()) return;
+      const quote = getQuoteBreakdown();
+      const missingRouteStop = quote.locations.some((location) => !location.suburb);
+      if (missingRouteStop) {
+        actionFeedback.textContent = 'Choose a suburb for each route stop before submitting.';
+        return;
+      }
+
+      preparedRequestText = buildSummaryText();
+      const submitButton = quoteForm.querySelector('.booking-submit');
+      const originalButtonText = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending quote…';
+      actionFeedback.textContent = '';
+      emailNote.textContent = `Sending your request to ${BUSINESS_EMAIL}…`;
+
+      try {
+        const response = await fetch(FORM_SUBMIT_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(makeSubmissionPayload())
+        });
+        let result = {};
+        try { result = await response.json(); } catch (_) { result = {}; }
+
+        const accepted = response.ok && (
+          result.success === true || result.success === 'true' ||
+          result.success === 1 || result.success === '1'
+        );
+        if (!accepted) {
+          const reason = result.message || result.error || `Email service returned status ${response.status}.`;
+          throw new Error(reason);
+        }
+
+        quoteSuccessHeading.textContent = 'Request submitted';
+        quoteSuccessText.textContent = `Your ${quote.locations.length}-location request has been accepted by the email service for delivery to ${BUSINESS_EMAIL}. Your estimate is ${money(quote.totalAmount)} NZD. This is a request only; the date and flight still need to be confirmed.`;
+        emailNote.textContent = 'Email request accepted. A one-time verification email may need to be confirmed in the business inbox before the first quote is delivered.';
+        emailRequestBtn.textContent = 'Send a copy from email';
+        quoteSuccess.classList.add('visible');
+        quoteSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (error) {
+        console.error('Birds-Eye quote email failed:', error);
+        quoteSuccessHeading.textContent = 'Email draft ready';
+        quoteSuccessText.textContent = `Automatic email delivery could not be confirmed. Your request is still prepared below; use the email button to open a message addressed to ${BUSINESS_EMAIL}, then press Send.`;
+        emailNote.textContent = 'Automatic email delivery did not complete. The fallback opens your email app with the quote and recipient already filled in.';
+        emailRequestBtn.textContent = 'Open addressed email draft';
+        quoteSuccess.classList.add('visible');
+        quoteSuccess.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        actionFeedback.textContent = 'Automatic sending failed. Use the addressed email draft to send the request.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+      }
+    });
+
+    function resetFormState() {
+      quoteSuccess.classList.remove('visible');
+      actionFeedback.textContent = '';
+      preparedRequestText = '';
+    }
+
+    syncBookingMode();
+    updateEstimateUI();
+  </script>
+</body>
+</html>
